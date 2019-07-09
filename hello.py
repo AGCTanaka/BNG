@@ -10,7 +10,8 @@ app = Flask(__name__)
 #アプリケーションルートにアクセスがあった場合
 @app.route('/')
 def hello():
-    return "<html> <body> <h1>sample</h1> </body> </html>"
+    values = {"val1" : 100,"val2" : 200}
+    return render_template("index.html",values = values)
 """
 #アプリケーション/indexにアクセスがあった場合
 @app.route("/index")
