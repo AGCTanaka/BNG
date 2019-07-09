@@ -10,11 +10,12 @@ app = Flask(__name__)
 #アプリケーションルートにアクセスがあった場合
 @app.route('/')
 def hello():
-    return "Hello,World!"
-
+    return "<html> <body> <h1>sample</h1> </body> </html>"
+"""
 #アプリケーション/indexにアクセスがあった場合
 @app.route("/index")
 def index():
     return render_template("index.html")
+"""
 if __name__ == '__main__':
     app.run() # どこからでもアクセス可能に
