@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
+{%extends "layout.html" %}
+{%bock content %}
     <title>error-detectTest</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +11,7 @@
   <body>
     <div class="container">
       <div class="header">
-        <h3 class="text-muted">Sample Page</h3>
+        <h3 class="text-muted">音声認識誤り修正</h3>
       </div>
       <br>
       <textarea  rows = "10" cols = "60">修正音声ファイルを入力してください</textarea>
@@ -23,5 +22,4 @@
       <textarea  rows = "10" cols = "60">修正後のテキストを表示します</textarea>
       <br>
     </div>
-  </body>
-</html>
+{% endblock %}

@@ -10,13 +10,6 @@ app = Flask(__name__)
 #アプリケーションルートにアクセスがあった場合
 @app.route('/')
 def hello():
-    values = {"val1" : 100,"val2" : 200}
-    return render_template("index.html",values = values)
-"""
-#アプリケーション/indexにアクセスがあった場合
-@app.route("/index")
-def index():
-    return render_template("index.html")
-"""
+    return render_template("index.html",title = "ErrorDetectTest")
 if __name__ == '__main__':
     app.run() # どこからでもアクセス可能に
