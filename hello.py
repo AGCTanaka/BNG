@@ -48,17 +48,15 @@ def make_sentence(text,json):
 #アプリケーションルートにアクセスがあった場合
 @app.route('/')
 def hello():
-    #vm()を動かす
-    return render_template("index.html",title = "ErrorDetectTest",name1 = "修正したい音声ファイルを入力してください",name2 = "修正後のテキストがここに表示されます")
+    return render_template("index.html",title = "ErrorDetectTest",name1 = "温泉認識は誤りを含む。",name2 = "")
 
 @app.route('/post',methods=['GET','POST'])
 def post():
-    title = "layout2"
     if request.method == 'POST':
         text = request.form['text']
         detectedText = error_detect(text)
         writeText = make_sentence(text,detectedText)
-    return render_template('index.html',name1=text,name2=writeText,title = title)
+    return render_template('index.html',name1=text,name2=writeText,title ="ErrorDetectTestResult")
 
 if __name__ == '__main__':
     app.run() # どこからでもアクセス可能に
