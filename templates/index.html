@@ -11,7 +11,7 @@
   <body>
     <div class="container">
       <div class="header">
-        <h3 class="text-muted">音声認識誤り修正</h3>
+        <h3 class="text-muted">感情判定</h3>
       </div>
       <br>
       <form action="/post" method="post" class="form-inline">
@@ -23,9 +23,8 @@
       <br>
       <textarea  rows = "10" cols = "60">{{name2}}</textarea>
       <p>使い方</p>
-      <p>上のテキストボックスに修正したい音声テキストを入力し、「送信する」ボタンを押してください。</p>
-      <p>音声認識修正の結果が下のテキストボックスに表示されます。</p>
-      <p>音声認識に誤りが検知できなかった場合、入力値に続いて<認識誤りは検知されませんでした>と表示されます。</p>
+      <p>上のテキストボックスに感情判定したいテキストを入力し、「送信する」ボタンを押してください。</p>
+      <p>感情判定の結果が下のテキストボックスに表示されます。</p>
       <br>
     </div>
 {% endblock %}

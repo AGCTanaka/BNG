@@ -14,7 +14,7 @@ token = "JxvI5GqPJucJfthIFcjHxdbBHc06"
 app = Flask(__name__)
 
 def error_detect(text):
-    url = "https://api.ce-cotoha.com/api/dev/nlp/beta/detect_misrecognition"
+    url = "https://api.ce-cotoha.com/api/dev/nlp/v1/sentiment"
     headers = {
             "Content-Type":"application/json;charset=UTF-8",
             "Authorization":"Bearer " + token
@@ -48,7 +48,7 @@ def make_sentence(text,json):
 #アプリケーションルートにアクセスがあった場合
 @app.route('/')
 def hello():
-    return render_template("index.html",title = "ErrorDetectTest",name1 = "温泉認識は誤りを含む。",name2 = "")
+    return render_template("index.html",title = "SentimentTest",name1 = "彼は寂しそうに笑っていた。",name2 = "")
 
 @app.route('/post',methods=['GET','POST'])
 def post():
@@ -56,7 +56,7 @@ def post():
         text = request.form['text']
         detectedText = error_detect(text)
         writeText = make_sentence(text,detectedText)
-    return render_template('index.html',name1=text,name2=writeText,title ="ErrorDetectTestResult")
+    return render_template('index.html',name1=text,name2=writeText,title ="SentimentTestResult")
 
 if __name__ == '__main__':
     app.run() # どこからでもアクセス可能に
