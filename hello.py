@@ -31,19 +31,16 @@ def make_sentence(text,json):
 #end_posを取得
 #textのbegin_posからend_posまでをcorrection[0]に置き換える
     jstext = json["result"]
-    if jstext["candidates"] == []:
-        text = text + "\n" + "<認識誤りは検知されませんでした。>"
+    if jstext["emotional_phrase"] == []:
+        text = text + "\n" + "<感情値は検知されませんでした。>"
         return text
     else:
-        for adjust in jstext["candidates"]:
-            beginpos = adjust["begin_pos"]
-            endpos = adjust["end_pos"]
-            head = text[:beginpos]
-            berry = adjust["correction"][0]
-            tail = text[endpos:]
-            text = head + berry["form"] + tail
-        return text
-
+        retvar = ""
+        for emotions in jstext["emotional_phrase"]:
+            root =emotions["form"]
+            emotion =emotions["emotion"]
+            retvar = retvar + "\n" + emotion + "\n" + root
+        return retvar
 
 #アプリケーションルートにアクセスがあった場合
 @app.route('/')
