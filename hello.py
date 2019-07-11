@@ -8,7 +8,7 @@ import os
 import numpy as np
 
 #きょうのトークンせってい
-token = "JxvI5GqPJucJfthIFcjHxdbBHc06"
+token = "GdlHdDTsGCogk5IqSMXZaXbec5Aa"
 
 # 自身の名称を app という名前でインスタンス化する
 app = Flask(__name__)
