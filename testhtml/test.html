@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+<meta http-equiv="content-type" charset="utf-8">
+	<body>
+	こたつなしで生きてはゆけないわ～。
+  <p>選択肢<span id = "span1"></span></p>
+  <form name = "tx1">
+<select name="example">
+<option value="選択肢1">選択肢1</option>
+<option value="選択肢2">選択肢2</option>
+<option value="選択肢3">選択肢3</option>
+
+</select>
+  </form>
+
+<script language="JavaScript">
+  function clickBtn1(){
+    const opt1 = document.tx1.example;
+    const num = opt1.selectedIndex;
+    const str = opt1.options[num].value;
+    document.getElementById("span1").textContent=str;
+  }
+</script>
+
+	</body>
+	</html>

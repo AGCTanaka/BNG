@@ -5,21 +5,64 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="../static/js/script.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   </head>
+  <script>
+    function selectfromPulldown(){
+      var selectedItem = document.getElementById("apimenues").selectedIndex;
+      var inputText = "";
+      switch(selectedItem){
+        case 1:
+          inputText = "入力された文章を構文解析します。";
+          break;
+        case 2:
+          inputText = "JRでしたら、東京駅か神田駅からのアクセスが便利です。";
+          break;
+        case 3:
+          inputText = "飼い犬のジョンが病気になっちゃってね。機能は彼の看病に付きっきりだったんだ。"
+          break;
+        case 4:
+          inputText = "ビックリするほどユートピア。";
+          break;
+        case 5:
+          inputText = "今日は映画館に行って新作のアクションを観るんだ。\n今日は劇場に行って名作のミュージカルを観るのだ。"
+          break;
+        case 6:
+          inputText = "あの、今の契約について確認したくて、えーっと、電話いたしました。";
+          break;
+        case 7:
+          inputText = "早く連れて行ってあげてください。";
+          break;
+        case 8:
+          inputText = "東京駅の大丸の9階で、鰻重を食べてから帰りました。";
+          break;
+        case 9:
+          inputText = "温泉認識の誤りを検出します。";
+          break;
+        case 10:
+          inputText = "ここしばらく空はどんよりしており、すっきりしないお天気です。";
+          break;
+      }
+      document.getElementById("text").value = inputText;
+    }
+  </script>
   <body>
     <div class="container">
       <div class="header">
         <h3 class="text-muted">COTOHA API 性能テスト</h3>
       </div>
       <p>
-      <select name="apimenu">
+      <form action="/post" id = "apiform" class = "form-inline",method = "POST",form="example", name = "apiselector">
+      <select name = "apimenu" id = "apimenues" onchange = "selectfromPulldown()">
+      <option value=""></option>
       <option value="構文解析">構文解析</option>
       <option value="固有表現抽出">固有表現抽出</option>
       <option value="照応解析">照応解析</option>
       <option value="キーワード抽出">キーワード抽出</option>
       <option value="類似度算出">類似度算出</option>
+      <option value="言い淀み除去">言い淀み除去</option>
       <option value="文タイプ判定">文タイプ判定</option>
       <option value="ユーザ属性推定">ユーザ属性推定(β)</option>
       <option value="音声認識誤り検知">音声認識誤り検知(β)</option>
@@ -27,18 +70,19 @@
       </select>
       </p>
       <br>
-      <form action="/post" method="post" class="form-inline">
-        <textarea  rows = "10" cols = "60" id="text" name="text">{{name1}}</textarea>
-          <button type="submit" class="btn btn-default">送信する</button>
+      <textarea  rows = "10" cols = "60" id="text" name="text">{{name1}}</textarea>
+      <button id = "inputbutton" type="submit" class="btn btn-default">送信する</button>
       </form>
       <br>
       <br>
       <br>
       <textarea  rows = "10" cols = "60">{{name2}}</textarea>
       <p>使い方</p>
-      <p>上のテキストボックスに修正したい音声テキストを入力し、「送信する」ボタンを押してください。</p>
-      <p>音声認識修正の結果が下のテキストボックスに表示されます。</p>
-      <p>音声認識に誤りが検知できなかった場合、入力値に続いて<認識誤りは検知されませんでした>と表示されます。</p>
+      <p>セレクトボックスから使用したいAPI機能を選択し、上のテキストボックスに解析させたい文章を入力して「送信する」ボタンを押してください。</p>
+      <p>文章の解析結果が下のテキストボックスに表示されます。</p>
+      <p>*1 プルダウンを選択するとサンプル文が表示されます。そのまま送信すると適切な解析結果が得られます。</p>
+      <p>*2 解析には少し時間がかかります。また、1000kb以上の長文は解析されないのでご留意ください。</p>
+      <p>*3 戻る機能はありません。逐一冒頭のページから解析を行ってください。</p>
       <br>
     </div>
 {% endblock %}
