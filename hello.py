@@ -20,6 +20,7 @@ def ip_check(func):
             print ("IP Check : Okay")
             return func(*args,**kwargs)
         else:
+            print(request.remote_addr)
             print("403")
             return "Request Denied"
     return wrapper
