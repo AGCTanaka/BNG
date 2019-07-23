@@ -12,6 +12,19 @@ token = "zGBaeGFxHicDKIdioEOIibnpCKpH"
 # 自身の名称を app という名前でインスタンス化する
 app = Flask(__name__)
 
+#ipアドレスに制限をかける
+
+def ip_check(func):
+    def wrapper(*args,**kwargs):
+        if re.search(request.remote_addr,"61\.127\.114\.*"):
+            print ("IP Check : Okay")
+            return func(*args,**kwargs)
+        else:
+            print("403")
+            return "Request Denied"
+    return wrapper
+
+
 #以下各APIを起動するための関数を定義する
 
 #類似度算出のみ引数を必ず二つ求める。よって類似度算出は別の関数で定義する
@@ -209,6 +222,7 @@ def call_analysis(text,json):
 
 #アプリケーションルートにアクセスがあった場合
 @app.route('/')
+@ip_check
 def hello():
     return render_template("index.html",title = "COTOHA API test",name1 = "プルダウンから機能を選択してください",name2 = "")
 
