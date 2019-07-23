@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 def ip_check(func):
     def wrapper(*args,**kwargs):
-        if re.match(request.remote_addr,"^10\..*"):
+        if "10." in request.remote_addr:
             print ("IP Check : Okay")
             return func(*args,**kwargs)
         else:
