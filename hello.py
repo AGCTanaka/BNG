@@ -1,12 +1,11 @@
 # -*- coding:utf-8 -*-
 # Flask などの必要なライブラリをインポートする
-from flask import Flask,render_template,request,redirect,url_for
+from flask import Flask,render_template,request,redirect,url_for,jsonify
 import requests
 import json
 import re
 import os
 import numpy as np
-
 #きょうのトークンせってい
 token = "tcVbPE2dVMW61MjqK86ZQHRN5YdH"
 # 自身の名称を app という名前でインスタンス化する
@@ -226,7 +225,7 @@ def call_analysis(text,json):
 @app.route('/')
 #@ip_check
 def hello():
-    return render_template("index.html",title = "COTOHA API test",name1 = "プルダウンから機能を選択してください",name2 = "")
+    return render_template("index.html",title ="API test page",name1 = "プルダウンから機能を選択してください",name2 = "")
 
 #プルダウンの値を読み取り、内容によって用いる関数と使い方部分に渡すパラグラフを変更する。
 
