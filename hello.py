@@ -8,7 +8,7 @@ import os
 import numpy as np
 
 #きょうのトークンせってい
-token = "GdlHdDTsGCogk5IqSMXZaXbec5Aa"
+token = "LuKoXHnH43dxVGDTbMoMMw4sNgq1"
 
 # 自身の名称を app という名前でインスタンス化する
 app = Flask(__name__)
@@ -26,7 +26,7 @@ def error_detect(text):
     r_json=r_post.json()
     return r_json
 
-def make_sentence(text,json):
+def detect_sentiment(text,json):
 #begin_posを取得
 #end_posを取得
 #textのbegin_posからend_posまでをcorrection[0]に置き換える
@@ -52,7 +52,7 @@ def post():
     if request.method == 'POST':
         text = request.form['text']
         detectedText = error_detect(text)
-        writeText = make_sentence(text,detectedText)
+        writeText = detect_sentiment(text,detectedText)
     return render_template('index.html',name1=text,name2=writeText,title ="SentimentTestResult")
 
 if __name__ == '__main__':
