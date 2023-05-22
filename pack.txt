@@ -87,7 +87,7 @@ pytz==2019.1
 PyYAML==5.1
 pyzmq==18.0.1
 qtconsole==4.5.1
-requests==2.21.0
+requests==2.31.0
 s3transfer==0.2.0
 scikit-learn==0.21.0
 scipy==1.2.1
